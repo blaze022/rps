@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rps</title>
+</head>
+<body>
+	<script type="text/javascript">
+		let ccnt=0,pcnt=0;
+
+		function computerPlay() {
+			let x = Math.floor(Math.random()*3);
+			console.log(x)
+			if(x==0){
+				return("rock")
+			}
+			else if(x==1){
+				return("paper")
+			}
+			else{
+				return("scissor")
+			}
+			// body...
+
+
+		}
+
+		
+		function playRound(playerSelection,computerSelection)
+		{
+			playerSelection= playerSelection.toLowerCase();
+
+			if(computerSelection=="rock" && playerSelection=="rock"){
+				return("Its a tie you both selected "+playerSelection);
+			}
+			else if(computerSelection=="rock" && playerSelection=="paper"){
+				pcnt+=1;
+				return("Computer lost because it selected "+computerSelection);
+			}
+			else if(computerSelection=="rock" && playerSelection=="scissor"){
+				ccnt+=1;
+				return("Computer won because selected "+computerSelection);
+			}
+
+			else if(computerSelection=="paper" && playerSelection=="paper"){
+				return("Its a tie you both selected "+playerSelection);
+
+			}
+
+			else if(computerSelection=="paper" && playerSelection=="rock"){
+				ccnt+=1;
+				return("Computer won because selected "+computerSelection);
+
+			}
+
+			else if(computerSelection=="paper" && playerSelection=="scissor"){
+				pcnt+=1;
+				return("Computer lost because it selected "+computerSelection)
+
+			}
+
+			else if(computerSelection=="scissor" &&playerSelection=="scissor"){
+				return("Its a tie you both selected "+playerSelection);
+			}
+
+			else if(computerSelection=="scissor" &&playerSelection=="paper"){
+				ccnt+=1;
+				return("Computer won because it selected "+computerSelection);
+
+			}
+			else if(computerSelection=="scissor" &&playerSelection=="rock"){
+				pcnt+=1;
+				return("Computer lost because it selected "+computerSelection);
+			}
+			else{
+				ccnt+=1;
+				return("Enter any one of the three: rock, paper or scissor-> but this round won by Computer because your mistake<-")
+			}
+
+		}
+
+		function game(){
+			let i=0
+			while(i<5){
+				const playerSelection = prompt("enter choice any one of the three: rock, paper or scissor");
+				const computerSelection = computerPlay();
+				console.log(playRound(playerSelection, computerSelection));
+				i+=1;
+
+			}
+			if(pcnt>ccnt){
+				console.log("Series won by You")
+			}
+			else{
+				console.log("Series won by Computer")
+			}
+			ccnt=0;
+			pcnt=0;
+		}
+		game()
+		
+			
+			
+	</script>
+
+</body>
+</html>
